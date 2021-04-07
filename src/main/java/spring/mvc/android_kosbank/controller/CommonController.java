@@ -38,4 +38,12 @@ public class CommonController extends HttpServlet {
 		Map<String, Object> map =memberService.androidLogiIn(req);
 		return map;
 	}
+	
+	@RequestMapping("/androidSignUp")
+	public @ResponseBody int androidSignUp(HttpServletRequest req){
+		logger.info("url ==> /androidSignUp");
+		System.out.println("signUp");
+		int insertCnt = memberService.androidSignUp(req);
+		return insertCnt;
+	}
 }

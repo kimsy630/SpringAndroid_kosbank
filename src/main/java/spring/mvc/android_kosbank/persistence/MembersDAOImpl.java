@@ -22,8 +22,8 @@ public class MembersDAOImpl implements MembersDAO{
 	SqlSession sqlSession;
 
 	@Override
-	public int insertMember(MembersVO vo) {
-		return sqlSession.insert("spring.mvc.android_kosbank.persistence.MembersDAO.insertMember",vo);
+	public int insertMember(Map<String, String> map) {
+		return sqlSession.insert("spring.mvc.android_kosbank.persistence.MembersDAO.insertMember",map);
 	}
 
 	@Override

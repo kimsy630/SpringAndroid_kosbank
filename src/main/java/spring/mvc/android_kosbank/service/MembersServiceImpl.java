@@ -55,6 +55,40 @@ public class MembersServiceImpl implements MembersService{
 		
 		return out;
 	}
+
+
+
+	@Override
+	public int androidSignUp(HttpServletRequest req) {
+		System.out.println("service 1");
+		String id = req.getParameter("id");
+		String pw = req.getParameter("pw");
+		String name = req.getParameter("name");
+		String rrnf = req.getParameter("rrnf");
+		String rrnl = req.getParameter("rrnl");
+		String RRN = rrnf + "-" + rrnl;
+		String address = req.getParameter("address");
+		String job = req.getParameter("job");
+		String phone = req.getParameter("phone");
+		String email = req.getParameter("email");
+		
+		Map<String, String> info = new HashMap<String, String>(); 
+		info.put("id", id);
+		info.put("pw", passwordEncoder.encode(pw));
+		info.put("name", name);
+		info.put("RRN", RRN);
+		info.put("address", address);
+		info.put("job", job);
+		info.put("phone", phone);
+		info.put("email", email);
+		System.out.println("service2");
+		
+		int insertCnt = memberDAO.insertMember(info);
+		System.out.println("service3");
+		
+		
+		return insertCnt;
+	}
 	
 	
 

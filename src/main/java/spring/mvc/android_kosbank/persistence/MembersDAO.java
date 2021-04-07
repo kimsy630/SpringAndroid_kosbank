@@ -13,7 +13,7 @@ import spring.mvc.android_kosbank.vo.MembersVO;
 
 
 public interface MembersDAO{
-	public int insertMember(MembersVO vo);
+	public int insertMember(Map<String,String> map);
 
 	public MembersVO getMemberInfo(String id);
 

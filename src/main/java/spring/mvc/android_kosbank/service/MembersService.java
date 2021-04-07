@@ -11,4 +11,5 @@ import org.springframework.ui.Model;
 @Service
 public interface MembersService {
 	public Map<String,Object> androidLogiIn(HttpServletRequest req);
+	public int androidSignUp(HttpServletRequest req);
 }

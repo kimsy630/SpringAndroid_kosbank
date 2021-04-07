@@ -5,9 +5,9 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace = "spring.mvc.android_kosbank.persistence.MembersDAO">
-	<insert id="insertMember" parameterType="spring.mvc.android_kosbank.vo.MembersVO">
+	<insert id="insertMember" parameterType="java.util.Map">
 		INSERT INTO members(id,pw,name,jumin,job,address,postnum,d_address,phone,email,authority)
-		VALUES(#{id},#{pw},#{name},#{jumin},#{job},#{address},#{postnum},#{d_address},#{phone},#{email},#{authority})
+		VALUES(#{id},#{pw},#{name},#{RRN},#{job},#{address},'nn','nn',#{phone},#{email},'ROLE_USER')
 	</insert>
 	
 	<select id ="getMemberInfo" parameterType="String" resultType="spring.mvc.android_kosbank.vo.MembersVO">
