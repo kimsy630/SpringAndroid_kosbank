@@ -3,7 +3,6 @@ package spring.mvc.android_kosbank.vo;
 import java.sql.Timestamp;
 
 public class Deposit_productVO {
-   private String y_Key;
    private String y_name;
    private String y_summary;
    private Timestamp y_date;

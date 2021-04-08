@@ -1,7 +1,9 @@
 package spring.mvc.android_kosbank.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -22,23 +24,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import spring.mvc.android_kosbank.persistence.FinancialProductsDAO;
 import spring.mvc.android_kosbank.service.MembersService;
+import spring.mvc.android_kosbank.vo.Deposit_productVO;
+import spring.mvc.android_kosbank.vo.savings_productVO;
 
 @Controller
-public class CommonController extends HttpServlet {
-	private static final Logger logger = LoggerFactory.getLogger(CommonController.class);
+public class FinancialProductsController extends HttpServlet {
+	private static final Logger logger = LoggerFactory.getLogger(FinancialProductsController.class);
 	
 	@Autowired
-	MembersService memberService;
+	FinancialProductsDAO dao;
 	
-	@RequestMapping("/androidLogiIn")
-	public @ResponseBody Map<String, Object> androidSignIn(HttpServletRequest req){
-		logger.info("url ==> /androidLogiIn");
-		System.out.println("123123213");
-		
-		Map<String, Object> map =memberService.androidLogiIn(req);
-		
-		return map;
+	@RequestMapping("/DepositList")
+	public @ResponseBody List<Deposit_productVO> androidSignIn(HttpServletRequest req){
+		logger.info("url ==> /DepositList");
+		return dao.getDepositList();
 	}
 	
 	
@@ -46,4 +47,7 @@ public class CommonController extends HttpServlet {
 	
 	
 	
+	
+	
 }
+ 
