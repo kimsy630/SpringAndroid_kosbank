@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace = "spring.mvc.android_kosbank.persistence.FinancialProductsDAO">
+	
+	<!-- ============================================================================ -->
+	
+	<select id="getLoanList" resultType="spring.mvc.android_kosbank.vo.Loans_productVO"> <!-- 대출상품 조회 -->
+		SELECT d_name, d_summary, d_max_price
+		 FROM Loans_product
+		 WHERE D_SUMMARY NOT LIKE '%상품판매종료%' <!-- D_SUMMARY != '상품판매종료' : 정상 대출 -->
+	</select>
+	
+	<select id="getLoanDetail" resultType="spring.mvc.android_kosbank.vo.Loans_productVO"> <!-- 대출상품 상세조회 -->
+		SELECT d_name, d_summary, d_min_date, d_max_date, d_interest_rate, d_min_price, d_max_price, d_explanation1, d_explanation2, d_explanation3
+		 FROM Loans_product
+		 WHERE d_name=#{d_name}
+	</select>
+	<!-- ============================================================================ -->
+			
+</mapper>
