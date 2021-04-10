@@ -31,6 +31,13 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 	
 	// ============================================================================
 	// 박서하
+	// 금융상품(대출) 조회
+	@Override
+	public Loans_productVO loanProduct(HttpServletRequest req) {
+		return dao.getLoanProduct();
+	}
+	
+	// 박서하
 	// 대출상품 조회
 	@Override
 	public List<Loans_productVO> loanProductsList(HttpServletRequest req) { 		
@@ -46,5 +53,7 @@ public class FinancialProductsServiceImpl implements FinancialProductsService{
 		return dao.getLoanDetail(d_name);
 	}
 	// ============================================================================
+
+	
 	
 }

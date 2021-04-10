@@ -20,6 +20,12 @@ public class FinancialProductsDAOImpl implements FinancialProductsDAO{
 	// 박서하
 	
 	@Override
+	public Loans_productVO getLoanProduct() { // 금융상품(대출) 조회
+		Loans_productVO vo = sqlSession.selectOne("spring.mvc.android_kosbank.persistence.FinancialProductsDAO.getLoanProduct");
+		return vo;
+	}
+	
+	@Override
 	public List<Loans_productVO> getLoanList() { // 대출상품 조회
 		List<Loans_productVO> list = sqlSession.selectList("spring.mvc.android_kosbank.persistence.FinancialProductsDAO.getLoanList");
 		return list;

@@ -7,6 +7,13 @@
 <mapper namespace = "spring.mvc.android_kosbank.persistence.FinancialProductsDAO">
 	
 	<!-- ============================================================================ -->
+	<select id="getLoanProduct" resultType="spring.mvc.android_kosbank.vo.Loans_productVO"> <!-- 금융상품(대출) 조회 -->
+		SELECT d_name, d_summary
+		 FROM (SELECT *
+                FROM Loans_product
+                ORDER BY d_date DESC)
+         WHERE ROWNUM = 1
+	</select>
 	
 	<select id="getLoanList" resultType="spring.mvc.android_kosbank.vo.Loans_productVO"> <!-- 대출상품 조회 -->
 		SELECT d_name, d_summary, d_max_price

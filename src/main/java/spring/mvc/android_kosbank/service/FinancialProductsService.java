@@ -13,6 +13,10 @@ import spring.mvc.android_kosbank.vo.Loans_productVO;
 public interface FinancialProductsService {
 	// ============================================================================
 	// 박서하
+	// 금융상품(대출) 조회
+	public Loans_productVO loanProduct(HttpServletRequest req); 
+		
+	// 박서하
 	// 대출상품 조회
 	public List<Loans_productVO> loanProductsList(HttpServletRequest req); 
 	

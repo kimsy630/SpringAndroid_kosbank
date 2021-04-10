@@ -23,7 +23,16 @@ public class FinancialProductsController {
 	FinancialProductsService service;
 	
 	// 박서하
-	//대출상품   
+	// 금융상품(대출)
+	@RequestMapping("/BankItemLoan")
+	public  @ResponseBody  Loans_productVO BankItemLoan(HttpServletRequest req) {
+		logger.info("url ==> /BankItemLoan");
+		
+		return service.loanProduct(req);
+	}
+	
+	// 박서하
+	// 대출상품   
 	@RequestMapping("/LoansProducts")
 	public  @ResponseBody  List<Loans_productVO> LoansProducts(HttpServletRequest req) {
 		logger.info("url ==> /LoansProducts");
@@ -32,7 +41,7 @@ public class FinancialProductsController {
 	}
 	
 	// 박서하
-	//대출상품 상세
+	// 대출상품 상세
 	@RequestMapping("/LoansDetail")
 	public @ResponseBody Loans_productVO LoansDetail(HttpServletRequest req,Model model) {
 		logger.info("url ==> /LoansDetail");
