@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import spring.mvc.android_kosbank.persistence.MembersDAOImpl;
+import spring.mvc.android_kosbank.vo.AccountVO;
+import spring.mvc.android_kosbank.vo.And_TransferDetailVO;
 import spring.mvc.android_kosbank.vo.MembersVO;
 
 
@@ -60,7 +62,6 @@ public class MembersServiceImpl implements MembersService{
 
 	@Override
 	public int androidSignUp(HttpServletRequest req) {
-		System.out.println("service 1");
 		String id = req.getParameter("id");
 		String pw = req.getParameter("pw");
 		String name = req.getParameter("name");
@@ -81,13 +82,49 @@ public class MembersServiceImpl implements MembersService{
 		info.put("job", job);
 		info.put("phone", phone);
 		info.put("email", email);
-		System.out.println("service2");
 		
 		int insertCnt = memberDAO.insertMember(info);
-		System.out.println("service3");
 		
 		
 		return insertCnt;
+	}
+
+
+
+	@Override
+	public Map<String, Object> getAccountInfo_Main(HttpServletRequest req) {
+		String id = req.getParameter("id");
+		
+		AccountVO vo = memberDAO.getAccountInfo_Main(id);
+		System.out.println(vo.getAccount());
+		System.out.println(vo.getBalance());
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("account", vo.getAccount());
+		map.put("balance", vo.getBalance());
+		return map;
+	}
+
+
+
+	@Override
+	public List<AccountVO> my_Account_List(HttpServletRequest req) {
+		String id = req.getParameter("id");
+		List<AccountVO> vo = memberDAO.my_Account_List(id);
+		
+		System.out.println(vo);
+		
+		return vo;
+	}
+
+
+
+	@Override
+	public List<And_TransferDetailVO> get_TransferDetail(HttpServletRequest req) {
+		String account = req.getParameter("account");
+		System.out.println(account);
+		List<And_TransferDetailVO> vo = memberDAO.get_TransferDetail(account);
+		
+		return vo;
 	}
 	
 	

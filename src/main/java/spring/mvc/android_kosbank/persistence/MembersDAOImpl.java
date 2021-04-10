@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Repository;
 
+import spring.mvc.android_kosbank.vo.AccountVO;
+import spring.mvc.android_kosbank.vo.And_TransferDetailVO;
 import spring.mvc.android_kosbank.vo.MembersVO;
 
 
@@ -33,6 +35,22 @@ public class MembersDAOImpl implements MembersDAO{
 	@Override
 	public int idCheck(String id) {//아이디 체크
 		return sqlSession.selectOne("spring.mvc.android_kosbank.persistence.MembersDAO.idCheck",id);
+	}
+
+	@Override
+	public AccountVO getAccountInfo_Main(String id) {
+		return sqlSession.selectOne("spring.mvc.android_kosbank.persistence.MembersDAO.getAccountInfo_Main",id);
+	}
+
+	@Override
+	public List<AccountVO> my_Account_List(String id) {
+		
+		return sqlSession.selectList("spring.mvc.android_kosbank.persistence.MembersDAO.my_Account_List",id);
+	}
+
+	@Override
+	public List<And_TransferDetailVO> get_TransferDetail(String account) {
+		return sqlSession.selectList("spring.mvc.android_kosbank.persistence.MembersDAO.get_TransferDetail",account);
 	}
 
 }

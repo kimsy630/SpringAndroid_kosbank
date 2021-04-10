@@ -15,4 +15,60 @@
 		FROM members
 		WHERE id=#{id}
 	</select>
+	<select id="getAccountInfo_Main" parameterType="String" resultType="spring.mvc.android_kosbank.vo.AccountVO"> 
+		SELECT account, balance ,RANKING
+		  FROM (SELECT account, balance
+		        ,RANK() OVER(ORDER BY balance DESC) AS RANKING
+		  FROM account_info
+		  WHERE id=#{id}
+		        )
+		    WHERE RANKING = 1
+	</select>
+	
+	<select id="my_Account_List" parameterType="String" resultType="spring.mvc.android_kosbank.vo.AccountVO">
+		SELECT account, balance, accounttype
+		  FROM account_info
+		 WHERE id = #{id}
+		 order by new_date asc
+	</select>
+	
+	<select id="get_TransferDetail" parameterType="String" resultType="spring.mvc.android_kosbank.vo.And_TransferDetailVO">
+		<![CDATA[
+		SELECT money
+         , in_comment
+         , out_comment
+         , in_out
+         , TO_CHAR (in_outdate, 'YY-MM-DD') AS in_outday
+         , TO_CHAR (in_outdate, 'HH24:MI:SS') AS in_outtime
+         , TO_CHAR(balance-summoney+money) AS balance
+    FROM(SELECT money
+              , balance
+              , in_comment
+              , out_comment
+              , in_out
+              , in_outdate 
+              , SUM(money) OVER(ORDER BY in_outdate DESC) as summoney
+         FROM  (select t.money,i.balance,t.in_comment
+                     , t.out_comment
+                     , t.in_out
+                     , t.in_outdate
+                FROM account_info i
+                  LEFT JOIN account_transfer t
+                   ON i.account=t.account
+                WHERE i.account='33-01-000001'
+                AND t.in_out='입금'
+                UNION
+                select t.money,i.balance
+                     , t.in_comment
+                     , t.out_comment
+                     , t.in_out 
+                     , t.in_outdate
+                FROM account_info i
+                  LEFT JOIN account_transfer t
+                   ON i.account=t.account
+                WHERE i.account='33-01-000001'
+                AND t.in_out='출금' ))
+    ORDER BY in_outdate DESC
+		]]>
+	</select>
 </mapper>
