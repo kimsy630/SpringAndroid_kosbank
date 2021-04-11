@@ -2,6 +2,7 @@ package spring.mvc.android_kosbank.vo;
 
 public class And_TransferDetailVO {
 	private int         money;
+	private String      account;
     private String      in_comment;
     private String      out_comment;
     private String      in_out;
@@ -14,6 +15,12 @@ public class And_TransferDetailVO {
     }
     public void setMoney(int money) {
         this.money = money;
+    }
+    public String getAccount() {
+        return account;
+    }
+    public void setAccount(String account) {
+        this.account = account;
     }
     public String getIn_comment() {
         return in_comment;
