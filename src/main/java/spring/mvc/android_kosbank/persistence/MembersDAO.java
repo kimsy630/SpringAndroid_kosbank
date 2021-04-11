@@ -19,4 +19,6 @@ public interface MembersDAO{
 
 	@Select("SELECT COUNT(*) FROM members WHERE id=#{id}")
 	public int idCheck(String id);
+	
+	
 }

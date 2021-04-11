@@ -11,6 +11,25 @@
 		FROM deposit_product
 	</select>
 	
-	
+	<select id="getSavingsList" resultType="spring.mvc.android_kosbank.vo.savings_productVO">
+		SELECT *
+		FROM savings_product
+	</select>
 		
+	<select id="BankItemDeposit" resultType="spring.mvc.android_kosbank.vo.Deposit_productVO">
+	SELECT *
+        FROM (SELECT *
+                        FROM deposit_product
+                ORDER BY y_date DESC)
+        WHERE ROWNUM = 1
+	</select>
+	
+	<select id="BankItemSavings" resultType="spring.mvc.android_kosbank.vo.savings_productVO">
+	SELECT *
+        FROM (SELECT *
+                        FROM savings_product
+                ORDER BY j_date DESC)
+        WHERE ROWNUM = 1
+	</select>
+	
 </mapper>

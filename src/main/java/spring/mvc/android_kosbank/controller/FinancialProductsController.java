@@ -37,11 +37,25 @@ public class FinancialProductsController extends HttpServlet {
 	FinancialProductsDAO dao;
 	
 	@RequestMapping("/DepositList")
-	public @ResponseBody List<Deposit_productVO> androidSignIn(HttpServletRequest req){
+	public @ResponseBody List<Deposit_productVO> DepositList(HttpServletRequest req){
 		logger.info("url ==> /DepositList");
 		return dao.getDepositList();
 	}
-	
+	@RequestMapping("/SavingsList")
+	public @ResponseBody List<savings_productVO> SavingsList(HttpServletRequest req){
+		logger.info("url ==> /SavingsList");
+		return dao.getSavingsList();
+	}
+	@RequestMapping("/BankItemDeposit")
+	public @ResponseBody Deposit_productVO BankItemDeposit(HttpServletRequest req){
+		logger.info("url ==> /BankItemDeposit");
+		return dao.BankItemDeposit();
+	}
+	@RequestMapping("/BankItemSavings")
+	public @ResponseBody savings_productVO BankItemSavings(HttpServletRequest req){
+		logger.info("url ==> /BankItemSavings");
+		return dao.BankItemSavings();
+	}
 	
 	
 	

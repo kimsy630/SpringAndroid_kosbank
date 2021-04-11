@@ -40,10 +40,4 @@ public class CommonController extends HttpServlet {
 		
 		return map;
 	}
-	
-	
-	
-	
-	
-	
 }
