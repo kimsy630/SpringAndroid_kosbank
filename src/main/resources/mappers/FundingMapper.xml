@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace = "spring.mvc.android_kosbank.persistence.FundingDAO">
+	
+	<!-- ============================================================================ -->
+	<select id="getFundProductAll" resultType="spring.mvc.android_kosbank.vo.FundingVO"> <!-- 펀드상품 전체조회 -->
+		SELECT * 
+		  FROM FUND 
+		 WHERE f_approve = 1
+		 ORDER BY f_num DESC
+	</select>
+	
+	<select id="getFundProductCat" resultType="spring.mvc.android_kosbank.vo.FundingVO"> <!-- 펀드상품 카테고리 조회 -->
+		SELECT * 
+		  FROM FUND 
+		 WHERE f_approve = 1 AND f_category = #{f_category}
+		 ORDER BY f_num DESC
+	</select>
+	<!-- ============================================================================ -->
+			
+</mapper>
