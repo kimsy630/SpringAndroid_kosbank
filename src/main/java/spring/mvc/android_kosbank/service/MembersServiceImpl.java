@@ -29,8 +29,6 @@ public class MembersServiceImpl implements MembersService{
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
 
-
-
 	@Override
 	public Map<String, Object> androidLogiIn(HttpServletRequest req) {
 		// 안드로이드에서 전달한 값
@@ -46,7 +44,7 @@ public class MembersServiceImpl implements MembersService{
 
 		Map<String, Object> out = new HashMap<String, Object>();
 		if(vo!=null) {
-			if( passwordEncoder.matches(pw,vo.getPw())) {
+			if(passwordEncoder.matches(pw,vo.getPw())) {
 				out.put("id",id);
 			}else {
 				out.put("id",null);

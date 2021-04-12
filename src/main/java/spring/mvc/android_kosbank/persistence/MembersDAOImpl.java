@@ -33,7 +33,7 @@ public class MembersDAOImpl implements MembersDAO{
 		return sqlSession.selectOne("spring.mvc.android_kosbank.persistence.MembersDAO.getMemberInfo",id);
 	}
 	@Override
-	public int idCheck(String id) {//아이디 체크
+	public int idCheck(String id) {	//아이디 체크
 		return sqlSession.selectOne("spring.mvc.android_kosbank.persistence.MembersDAO.idCheck",id);
 	}
 

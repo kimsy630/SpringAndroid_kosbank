@@ -38,7 +38,9 @@ public class CommonController extends HttpServlet {
 	public @ResponseBody Map<String, Object> androidSignIn(HttpServletRequest req){
 		logger.info("url ==> /androidLogiIn");
 		System.out.println("123123213");
+		
 		Map<String, Object> map =memberService.androidLogiIn(req);
+		
 		return map;
 	}
 	
