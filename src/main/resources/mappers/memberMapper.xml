@@ -17,11 +17,11 @@
 	</select>
 	<select id="getAccountInfo_Main" parameterType="String" resultType="spring.mvc.android_kosbank.vo.AccountVO"> 
 		SELECT account, balance ,RANKING
-		  FROM (SELECT account, balance
-		        ,RANK() OVER(ORDER BY balance DESC) AS RANKING
-		  FROM account_info
-		  WHERE id=#{id}
-		        )
+		  FROM(SELECT ROWNUM RANKING,i.*
+                 FROM(SELECT account, balance
+                      FROM account_info
+                      WHERE id=#{id}
+                      ORDER BY balance DESC) i)
 		    WHERE RANKING = 1
 	</select>
 	
