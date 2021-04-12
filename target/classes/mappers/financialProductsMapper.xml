@@ -5,7 +5,6 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace = "spring.mvc.android_kosbank.persistence.FinancialProductsDAO">
-	
 	<select id="getDepositList" resultType="spring.mvc.android_kosbank.vo.Deposit_productVO">
 		SELECT *
 		FROM deposit_product
@@ -54,4 +53,10 @@
 	</select>
 	<!-- ============================================================================ -->
 			
+		
+	<select id="checkPwd" resultType="int">
+		SELECT COUNT(*) 
+		  FROM account_info
+		 WHERE account = #{account} AND accountPW = #{accountPW}
+	</select>
 </mapper>

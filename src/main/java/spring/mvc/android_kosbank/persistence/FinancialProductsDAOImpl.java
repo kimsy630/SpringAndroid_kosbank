@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import spring.mvc.android_kosbank.vo.Deposit_productVO;
 import spring.mvc.android_kosbank.vo.savings_productVO;
 import spring.mvc.android_kosbank.vo.Loans_productVO;
+import spring.mvc.android_kosbank.vo.AccountVO;
 
 
 @Repository
@@ -69,5 +70,13 @@ public class FinancialProductsDAOImpl implements FinancialProductsDAO{
 	}
 
 	// ============================================================================
+	
+	
+	@Override
+	public int checkPwd(AccountVO vo) {
+		
+		return sqlSession.getMapper(FinancialProductsDAO.class).checkPwd(vo);
+	}
+	
 	
 }

@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
+import spring.mvc.android_kosbank.vo.AccountVO;
 import spring.mvc.android_kosbank.vo.Deposit_productVO;
 import spring.mvc.android_kosbank.vo.savings_productVO;
 
@@ -25,6 +26,7 @@ public interface FinancialProductsDAO{
 	public Deposit_productVO BankItemDeposit();
 	
 	public savings_productVO BankItemSavings();
+	public int checkPwd(AccountVO vo);
 	// ============================================================================
 	
 }
