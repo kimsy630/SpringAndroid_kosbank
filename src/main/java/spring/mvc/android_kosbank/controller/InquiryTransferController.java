@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.firebase.messaging.FirebaseMessagingException;
+
 import spring.mvc.android_kosbank.service.InquiryTransferService;
 import spring.mvc.android_kosbank.service.RegisterReleaseService;
 import spring.mvc.android_kosbank.vo.AccountVO;
@@ -30,6 +32,9 @@ public class InquiryTransferController {
 	
 	@Autowired
 	InquiryTransferService InquiryTransferService;
+	
+	@Autowired
+	spring.mvc.android_kosbank.service.FCMService FCMService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(InquiryTransferController.class);
 	
@@ -65,6 +70,14 @@ public class InquiryTransferController {
 		System.out.println("id == " + id);
 		
 		Map<String, Object> map = InquiryTransferService.transferAction(req);
+			
+			try {
+				FCMService.asFcmTest();
+			} catch (FirebaseMessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 		return map;
 	}
 	
