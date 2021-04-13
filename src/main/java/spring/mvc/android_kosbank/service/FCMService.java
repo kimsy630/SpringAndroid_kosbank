@@ -74,19 +74,6 @@ public class FCMService{
 	                    , HttpMethod.POST
 	                    , httpEntity
 	                    , String.class);
-	        
-//	            if (res.getStatusCode() != HttpStatus.OK) {
-//	                log.debug("FCM-Exception");
-//	                log.debug(res.getStatusCode().toString());
-//	                log.debug(res.getHeaders().toString());
-//	                log.debug(res.getBody().toString());
-//	                
-//	            } else {
-//	                log.debug(res.getStatusCode().toString());
-//	                log.debug(res.getHeaders().toString());
-//	                log.debug(res.getBody().toLowerCase());
-//	                
-//	            }
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }

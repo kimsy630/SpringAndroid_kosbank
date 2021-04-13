@@ -71,12 +71,7 @@ public class InquiryTransferController {
 		
 		Map<String, Object> map = InquiryTransferService.transferAction(req);
 			
-			try {
-				FCMService.asFcmTest();
-			} catch (FirebaseMessagingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
 		
 		return map;
 	}
